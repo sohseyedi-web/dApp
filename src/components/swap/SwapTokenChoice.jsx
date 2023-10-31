@@ -24,7 +24,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
 
   const getCoinswithQuery = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3005/tokens`);
+      const { data } = await axios.get(`http://localhost:4000/api/tokens`);
       setCoins(data);
     } catch (error) {
       console.log(error.message);
@@ -110,7 +110,9 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
                 </div>
                 <button
                   className={`${
-                    checkInPin(pinCoins, coin) ? "text-indigo-700" : "text-white"
+                    checkInPin(pinCoins, coin)
+                      ? "text-indigo-700"
+                      : "text-white"
                   } z-50 transition-all duration-300`}
                   onClick={() => handleCoinToPinList(coin)}
                 >
