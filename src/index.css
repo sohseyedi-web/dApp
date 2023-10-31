@@ -14,3 +14,11 @@ body {
   background-color: #252525;
 }
 
+.scroll::-webkit-scrollbar {
+  width: 0.7em;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: indigo;
+  border-radius: 0.1rem;
+}

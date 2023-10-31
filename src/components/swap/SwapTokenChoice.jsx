@@ -82,7 +82,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
         </div>
         <hr className=" border-indigo-700" />
         {/* result coins */}
-        <div className="py-2 overflow-auto max-h-[200px]">
+        <div className="py-2 overflow-auto max-h-[200px] scroll">
           {filterCoins.length === 0 ? (
             <div className="flex items-center justify-center gap-x-1 text-red-500">
               <RiIcon.RiEmotionUnhappyLine size={24} />
