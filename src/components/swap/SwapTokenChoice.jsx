@@ -22,10 +22,10 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
     }
   };
 
-  const getCoinswithQuery = async () => {
+  const getCoinswithQuery = async (value) => {
     try {
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_DATA}/tokens`
+        `${import.meta.env.VITE_API_DATA}/tokens?c=${value}`
       );
       setCoins(data);
     } catch (error) {
@@ -33,13 +33,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
     }
   };
 
-  const filterCoins = coins
-    .filter((coin) => coin.chain.includes(coinChain))
-    .filter(
-      (newCoin) =>
-        newCoin.name.toLowerCase().includes(search) ||
-        newCoin.symbol.toLowerCase().includes(search)
-    );
+  const filterCoins = coins.filter((coin) => coin.chain.includes(coinChain));
 
   useEffect(() => {
     getCoinswithQuery(search);
