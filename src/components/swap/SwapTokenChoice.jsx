@@ -73,7 +73,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
             <span
               onClick={() => onModify(pin)}
               key={pin._id}
-              className="p-1 rounded-lg border border-gray-500 text-sm flex items-center gap-x-1"
+              className="p-1 cursor-pointer rounded-lg border border-gray-500 text-sm flex items-center gap-x-1"
             >
               <img src={pin.img} width={22} height={22} alt={pin.name} />
               {pin.name}
@@ -110,7 +110,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
                 </div>
                 <button
                   className={`${
-                    checkInPin(pinCoins, coin) ? "text-[#E234B9]" : "text-white"
+                    checkInPin(pinCoins, coin) ? "text-indigo-700" : "text-white"
                   } z-50 transition-all duration-300`}
                   onClick={() => handleCoinToPinList(coin)}
                 >
