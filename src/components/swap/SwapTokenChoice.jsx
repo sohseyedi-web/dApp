@@ -24,7 +24,9 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
 
   const getCoinswithQuery = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:4000/api/tokens`);
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_DATA}/tokens`
+      );
       setCoins(data);
     } catch (error) {
       console.log(error.message);
