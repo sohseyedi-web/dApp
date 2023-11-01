@@ -5,6 +5,7 @@ import { useAccount } from "wagmi";
 import { commas } from "./../../utils/comma";
 import { Skeleton } from "@mui/material";
 
+
 const SwapBox = ({
   onSelectToken,
   onChangeAmount,
@@ -20,6 +21,7 @@ const SwapBox = ({
 }) => {
   const [open, setOpen] = useState(false);
   const { isConnected } = useAccount();
+  
 
   return (
     <>
@@ -93,7 +95,7 @@ const SwapBox = ({
                     width={"50px"}
                     height={"30px"}
                     sx={{
-                      margin:0,
+                      margin: 0,
                       borderRadius: ".5rem",
                       background:
                         "linear-gradient(270deg, rgba(71, 77, 96, 0) 0%, #474D60 100%)",
@@ -156,7 +158,7 @@ const SwapBox = ({
                     width={"50px"}
                     height={"30px"}
                     sx={{
-                      margin:0,
+                      margin: 0,
                       borderRadius: ".5rem",
                       background:
                         "linear-gradient(270deg, rgba(71, 77, 96, 0) 0%, #474D60 100%)",
