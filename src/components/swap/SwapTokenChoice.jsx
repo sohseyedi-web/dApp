@@ -14,6 +14,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
   const { coinChain, pinCoins } = useSelector((state) => state.coin);
   const dispatch = useDispatch();
 
+  // handler for add coin to pin list
   const handleCoinToPinList = (value) => {
     if (checkInPin(pinCoins, value)) {
       dispatch(removePinCoinsLists(value._id));
@@ -22,6 +23,7 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
     }
   };
 
+  // get coins with query and show result
   const getCoinswithQuery = async (value) => {
     try {
       const { data } = await axios.get(
@@ -32,12 +34,13 @@ const SwapTokenChoice = ({ setShowSwap, onModify }) => {
       console.log(error.message);
     }
   };
-
-  const filterCoins = coins.filter((coin) => coin.chain.includes(coinChain));
-
   useEffect(() => {
     getCoinswithQuery(search);
   }, [search]);
+
+  // filter coin with coin chain(Ethereum || Bnb)
+  const filterCoins = coins.filter((coin) => coin.chain.includes(coinChain));
+
 
   return (
     <>

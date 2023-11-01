@@ -11,6 +11,7 @@ const ConnectButton = ({ isConnected, address }) => {
 
   return isConnected ? (
     <>
+      {/* connect button */}
       <button
         onClick={disconnect}
         className=" bg-indigo-600 justify-center gap-x-2 items-center border-none lg:flex hidden border text-white transition-all duration-300 hover:bg-indigo-900 hover:text-indigo-100 font-bold w-[200px] rounded-2xl h-[45px] text-xl"
@@ -27,6 +28,7 @@ const ConnectButton = ({ isConnected, address }) => {
     </>
   ) : (
     <>
+      {/* not connect button */}
       <button
         onClick={connect}
         className="border-indigo-700 lg:block hidden border text-blue-700 transition-all duration-300 hover:bg-blue-700 hover:text-indigo-100 font-bold w-[200px] rounded-2xl h-[45px] text-xl"

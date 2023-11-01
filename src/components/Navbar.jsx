@@ -13,8 +13,10 @@ const Navbar = () => {
         <h2 className="text-2xl font-bold">DexSwap</h2>
       </div>
       <div className="gap-x-2 flex items-center">
-      <CoinChainPopover isConnected={isConnected} />
-      <ConnectButton isConnected={isConnected} address={address} />
+        {/* change coin change popup */}
+        <CoinChainPopover isConnected={isConnected} />
+        {/* connect or disconnect wallet */}
+        <ConnectButton isConnected={isConnected} address={address} />
       </div>
     </nav>
   );

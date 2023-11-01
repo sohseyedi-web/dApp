@@ -17,6 +17,7 @@ const Home = () => {
   const [showSwap, setShowSwap] = useState(1);
   let ratio = tokenOnePrice / tokenTwoPrice;
 
+  // clean up fields
   const cleanUpToken = () => {
     setTokenTwoPrice("");
     setTokenOnePrice("");
@@ -26,6 +27,7 @@ const Home = () => {
     setTokenTwo("");
   };
 
+  // switch token between inputs
   const switchToken = () => {
     cleanUpToken();
     setTokenOne(tokenTwo);
@@ -34,11 +36,13 @@ const Home = () => {
     setTokenOnePrice(tokenTwoPrice);
   };
 
+  // open token choice box
   const hanldeSelectToken = (value) => {
     setChangeToken(value);
     setShowSwap(2);
   };
 
+  // select token 
   const modifyToken = (token) => {
     if (changeToken === 1 && tokenTwo?._id !== token._id) {
       setTokenOne(token);
@@ -53,6 +57,7 @@ const Home = () => {
     setShowSwap(1);
   };
 
+  // get tokens price handler
   const fetchPrices = async (one, two) => {
     try {
       const { data } = await axios.get(
@@ -65,11 +70,12 @@ const Home = () => {
       console.log(error.message);
     }
   };
-
   useEffect(() => {
     fetchPrices(tokenOne?.symbol, tokenTwo?.symbol);
   }, [tokenOne, tokenTwo]);
 
+
+  // on change inputs
   const onChangeAmount = (e) => {
     setTokenOneAmount(e.target.value);
     if (e.target.value && ratio) {
