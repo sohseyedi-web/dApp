@@ -13,6 +13,7 @@ const Home = () => {
   const [tokenTwoPrice, setTokenTwoPrice] = useState("");
   const [tokenTwoAmount, setTokenTwoAmount] = useState("");
   // other state
+  const [loading, setLoading] = useState(false);
   const [changeToken, setChangeToken] = useState(1);
   const [showSwap, setShowSwap] = useState(1);
   let ratio = tokenOnePrice / tokenTwoPrice;
@@ -42,7 +43,7 @@ const Home = () => {
     setShowSwap(2);
   };
 
-  // select token 
+  // select token
   const modifyToken = (token) => {
     if (changeToken === 1 && tokenTwo?._id !== token._id) {
       setTokenOne(token);
@@ -59,6 +60,7 @@ const Home = () => {
 
   // get tokens price handler
   const fetchPrices = async (one, two) => {
+    setLoading(true);
     try {
       const { data } = await axios.get(
         `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${one},${two}&tsyms=USD`
@@ -68,12 +70,13 @@ const Home = () => {
       setTokenTwoPrice(tokenPrices[1].USD);
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
     fetchPrices(tokenOne?.symbol, tokenTwo?.symbol);
   }, [tokenOne, tokenTwo]);
-
 
   // on change inputs
   const onChangeAmount = (e) => {
@@ -100,6 +103,7 @@ const Home = () => {
             tokenOneAmount={tokenOneAmount}
             tokenTwoAmount={tokenTwoAmount}
             onChangeAmount={onChangeAmount}
+            loading={loading}
           />
         )}
         {showSwap == 2 && (

@@ -3,6 +3,7 @@ import { useState } from "react";
 import InfoModalToken from "../common/InfoModalToken";
 import { useAccount } from "wagmi";
 import { commas } from "./../../utils/comma";
+import { Skeleton } from "@mui/material";
 
 const SwapBox = ({
   onSelectToken,
@@ -15,6 +16,7 @@ const SwapBox = ({
   onClean,
   tokenTwoPrice,
   tokenOnePrice,
+  loading,
 }) => {
   const [open, setOpen] = useState(false);
   const { isConnected } = useAccount();
@@ -83,10 +85,23 @@ const SwapBox = ({
             <RiIcon.RiArrowDropDownLine size={30} />
           </div>
           {tokenOne && (
-            <div className="flex items-center justify-between text-base">
+            <div className="flex items-center justify-between text-base py-1">
               <h6 className="text-gray-500 font-semibold">{tokenOne.name}</h6>
               <span className="text-gray-500 font-semibold">
-                ${tokenOnePrice?.toFixed(2)}
+                {loading ? (
+                  <Skeleton
+                    width={"50px"}
+                    height={"30px"}
+                    sx={{
+                      margin:0,
+                      borderRadius: ".5rem",
+                      background:
+                        "linear-gradient(270deg, rgba(71, 77, 96, 0) 0%, #474D60 100%)",
+                    }}
+                  />
+                ) : (
+                  `$${tokenOnePrice?.toFixed(2)}`
+                )}
               </span>
             </div>
           )}
@@ -133,10 +148,23 @@ const SwapBox = ({
             <RiIcon.RiArrowDropDownLine size={30} />
           </div>
           {tokenTwo && (
-            <div className="flex items-center justify-between text-base">
+            <div className="flex items-center justify-between text-base py-1">
               <h6 className="text-gray-500 font-semibold">{tokenTwo.name}</h6>
               <span className="text-gray-500 font-semibold">
-                ${tokenTwoPrice?.toFixed(2)}
+                {loading ? (
+                  <Skeleton
+                    width={"50px"}
+                    height={"30px"}
+                    sx={{
+                      margin:0,
+                      borderRadius: ".5rem",
+                      background:
+                        "linear-gradient(270deg, rgba(71, 77, 96, 0) 0%, #474D60 100%)",
+                    }}
+                  />
+                ) : (
+                  `$${tokenTwoPrice?.toFixed(2)}`
+                )}
               </span>
             </div>
           )}
