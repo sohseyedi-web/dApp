@@ -25,26 +25,7 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
               <h6 className="text-gray-400 font-semibold">{tokenOne?.name}</h6>
             </div>
             <hr />
-            <a
-              href={
-                coinChain === "Ethereum"
-                  ? `${import.meta.env.VITE_ETH_SCAN}/${tokenOne?.address}#code`
-                  : `${import.meta.env.VITE_BNB_SCAN}/${tokenOne?.address}#code`
-              }
-              className="block mb-3"
-            >
-              View Contract
-            </a>
-            <a
-              href={
-                coinChain === "Ethereum"
-                  ? `${import.meta.env.VITE_ETH_SCAN}/${tokenOne?.address}`
-                  : `${import.meta.env.VITE_BNB_SCAN}/${tokenOne?.address}`
-              }
-              className="block mb-3"
-            >
-              Token Info
-            </a>
+            <LinkComponentModal coin={coinChain} token={tokenOne} />
           </div>
           {tokenTwo && (
             <div className="flex flex-col w-[45%] text-white text-center space-y-3">
@@ -59,30 +40,7 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
                 </h6>
               </div>
               <hr />
-              <Link
-                to={
-                  coinChain === "Ethereum"
-                    ? `${import.meta.env.VITE_ETH_SCAN}/${
-                        tokenTwo?.address
-                      }#code`
-                    : `${import.meta.env.VITE_BNB_SCAN}/${
-                        tokenTwo?.address
-                      }#code`
-                }
-                className="block mb-3"
-              >
-                View Contract
-              </Link>
-              <Link
-                to={
-                  coinChain === "Ethereum"
-                    ? `${import.meta.env.VITE_ETH_SCAN}/${tokenTwo?.address}`
-                    : `${import.meta.env.VITE_BNB_SCAN}/${tokenTwo?.address}`
-                }
-                className="block mb-3"
-              >
-                Token Info
-              </Link>
+              <LinkComponentModal coin={coinChain} token={tokenTwo} />
             </div>
           )}
         </div>
@@ -92,3 +50,32 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
 };
 
 export default InfoModalToken;
+
+function LinkComponentModal({ coin, token }) {
+  return (
+    <>
+      <a
+        target={"_blank"}
+        href={
+          coin === "Ethereum"
+            ? `${import.meta.env.VITE_ETH_SCAN}/${token?.address}#code`
+            : `${import.meta.env.VITE_BNB_SCAN}/${token?.address}#code`
+        }
+        className="block mb-3 text-lg font-semibold transition-all hover:text-blue-600"
+      >
+        View Contract
+      </a>
+      <a
+        target={"_blank"}
+        href={
+          coin === "Ethereum"
+            ? `${import.meta.env.VITE_ETH_SCAN}/${token?.address}`
+            : `${import.meta.env.VITE_BNB_SCAN}/${token?.address}`
+        }
+        className="block mb-3 text-lg font-semibold transition-all hover:text-blue-600"
+      >
+        Token Info
+      </a>
+    </>
+  );
+}
