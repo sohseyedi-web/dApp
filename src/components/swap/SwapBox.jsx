@@ -2,6 +2,7 @@ import * as RiIcon from "react-icons/ri";
 import { useState } from "react";
 import InfoModalToken from "../common/InfoModalToken";
 import { useAccount } from "wagmi";
+import { commas } from "./../../utils/comma";
 
 const SwapBox = ({
   onSelectToken,
@@ -50,7 +51,7 @@ const SwapBox = ({
         <div className="w-full bg-[#0d111b] rounded-lg h-[120px] px-3 py-2 shadow-lg mb-3 relative">
           <h6 className="font-semibold mb-5">You sell</h6>
           <input
-            value={tokenOneAmount}
+            value={commas(tokenOneAmount)}
             onChange={onChangeAmount}
             disabled={!tokenOnePrice}
             dir="rtl"
@@ -101,7 +102,7 @@ const SwapBox = ({
         <div className="w-full bg-[#0d111b] rounded-lg h-[120px] px-3 py-2 shadow-lg mb-3 relative">
           <h6 className="font-semibold mb-5">You Buy</h6>
           <input
-            value={tokenTwoAmount}
+            value={commas(tokenTwoAmount)}
             readOnly
             dir="rtl"
             placeholder="0"
