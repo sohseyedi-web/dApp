@@ -1,7 +1,9 @@
 import { Modal } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
+  const { coinChain } = useSelector((state) => state.coin);
   return (
     <Modal
       open={open}
@@ -23,12 +25,26 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
               <h6 className="text-gray-400 font-semibold">{tokenOne?.name}</h6>
             </div>
             <hr />
-            <Link to={"/"} className="block mb-3">
+            <a
+              href={
+                coinChain === "Ethereum"
+                  ? `${import.meta.env.VITE_ETH_SCAN}/${tokenOne?.address}#code`
+                  : `${import.meta.env.VITE_BNB_SCAN}/${tokenOne?.address}#code`
+              }
+              className="block mb-3"
+            >
               View Contract
-            </Link>
-            <Link to={"/"} className="block mb-3">
+            </a>
+            <a
+              href={
+                coinChain === "Ethereum"
+                  ? `${import.meta.env.VITE_ETH_SCAN}/${tokenOne?.address}`
+                  : `${import.meta.env.VITE_BNB_SCAN}/${tokenOne?.address}`
+              }
+              className="block mb-3"
+            >
               Token Info
-            </Link>
+            </a>
           </div>
           {tokenTwo && (
             <div className="flex flex-col w-[45%] text-white text-center space-y-3">
@@ -43,10 +59,28 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
                 </h6>
               </div>
               <hr />
-              <Link to={"/"} className="block mb-3">
+              <Link
+                to={
+                  coinChain === "Ethereum"
+                    ? `${import.meta.env.VITE_ETH_SCAN}/${
+                        tokenTwo?.address
+                      }#code`
+                    : `${import.meta.env.VITE_BNB_SCAN}/${
+                        tokenTwo?.address
+                      }#code`
+                }
+                className="block mb-3"
+              >
                 View Contract
               </Link>
-              <Link to={"/"} className="block mb-3">
+              <Link
+                to={
+                  coinChain === "Ethereum"
+                    ? `${import.meta.env.VITE_ETH_SCAN}/${tokenTwo?.address}`
+                    : `${import.meta.env.VITE_BNB_SCAN}/${tokenTwo?.address}`
+                }
+                className="block mb-3"
+              >
                 Token Info
               </Link>
             </div>
