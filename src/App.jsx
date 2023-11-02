@@ -6,14 +6,14 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-      <section className="flex flex-col min-h-screen">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Toaster />
-        <Footer />
-      </section>
+    <section className="flex flex-col min-h-screen">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Toaster />
+      <Footer />
+    </section>
   );
 }
 

@@ -25,14 +25,14 @@ const persistor = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <WagmiConfig config={config}>
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <BrowserRouter>
+    <BrowserRouter>
+      <WagmiConfig config={config}>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
             <App />
-          </BrowserRouter>
-        </PersistGate>
-      </Provider>
-    </WagmiConfig>
+          </PersistGate>
+        </Provider>
+      </WagmiConfig>
+    </BrowserRouter>
   </React.StrictMode>
 );
