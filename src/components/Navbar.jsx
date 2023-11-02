@@ -1,7 +1,7 @@
 import * as RiIcon from "react-icons/ri";
 import { useAccount } from "wagmi";
-import CoinChainPopover from "./common/coinChainPopover";
 import ConnectButton from "./common/ConnectButton";
+import CoinChainPopover from './common/CoinChainPopover';
 
 const Navbar = () => {
   const { address, isConnected } = useAccount();
