@@ -1,5 +1,4 @@
 import { Modal } from "@mui/material";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {

@@ -4,7 +4,7 @@ import InfoModalToken from "../common/InfoModalToken";
 import { useAccount } from "wagmi";
 import { commas } from "./../../utils/comma";
 import { Skeleton } from "@mui/material";
-
+import Slippage from "../common/Slippage";
 
 const SwapBox = ({
   onSelectToken,
@@ -20,8 +20,16 @@ const SwapBox = ({
   loading,
 }) => {
   const [open, setOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const { isConnected } = useAccount();
-  
+
+  const show = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <>
@@ -33,6 +41,16 @@ const SwapBox = ({
             size={30}
             className="text-indigo-700 cursor-pointer rotate-0 transition-all duration-300 hover:rotate-180"
           />
+          <RiIcon.RiSettings3Line
+            id="fade-button"
+            onClick={handleClick}
+            size={30}
+            aria-controls={show ? "fade-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={show ? "true" : undefined}
+            className="text-indigo-700 cursor-pointer rotate-0 transition-all duration-300 hover:rotate-180"
+          />
+          <Slippage open={show} anchorEl={anchorEl} handleClose={handleClose} />
           {(tokenOne?.name || tokenTwo?.name) && (
             <>
               <RiIcon.RiInformationLine
