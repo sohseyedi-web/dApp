@@ -5,11 +5,12 @@ import { store } from "./store/store";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import { persistStore } from "redux-persist";
+import { BrowserRouter } from "react-router-dom";
 import { publicProvider } from "wagmi/providers/public";
 import { PersistGate } from "redux-persist/integration/react";
 import { configureChains, mainnet, WagmiConfig, createConfig } from "wagmi";
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { provider, webSocketProvider } = configureChains(
   [mainnet],
   [publicProvider()]
 );
@@ -27,7 +28,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <WagmiConfig config={config}>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </PersistGate>
       </Provider>
     </WagmiConfig>

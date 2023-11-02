@@ -24,7 +24,7 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
               <h6 className="text-gray-400 font-semibold">{tokenOne?.name}</h6>
             </div>
             <hr />
-            {/* <TokenInfo coin={coinChain} token={tokenOne} /> */}
+            <TokenInfo coin={coinChain} token={tokenOne} />
           </div>
           {tokenTwo && (
             <div className="flex flex-col w-[45%] text-white text-center space-y-3">
@@ -39,7 +39,7 @@ const InfoModalToken = ({ open, setOpen, tokenOne, tokenTwo }) => {
                 </h6>
               </div>
               <hr />
-              {/* <TokenInfo coin={coinChain} token={tokenTwo} /> */}
+              <TokenInfo coin={coinChain} token={tokenTwo} />
             </div>
           )}
         </div>
